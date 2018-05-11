@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <head>
+            
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>   
+
+             <style>
+                    h2 {
+                        color: MediumSeaGreen;
+                        font-family: verdana;
+                        font-size: 300%;
+                        text-align:center;
+                        
+                    }
+             </style>
+    </head>
+    
+<body>
+   
+<h2 >The JSON data into a table</h2>
+<hr>
+<br>
+<br>
+
+<div class="container">
+    <div class="responsive">
+
+<table style="background-color: lightblue" class=" table table-bordered table-stripped table-hover" id="data_table">
+
+        <tr>
+                <th>First-name</th>
+                <th>Last-name</th>
+                <th>HOME</th>
+        </tr>
+        <script>
+            $(document).ready(function(){
+                $.getJSON("data.json",function(data){
+                    var bio_data='';
+                    $.each(data,function(key,value){
+                        bio_data +='<tr>';
+                        bio_data +='<td>'+value.first_name+'</td>';
+                        bio_data +='<td>'+value.last_name+'</td>';
+                        bio_data +='<td>'+value.home+'</td>';
+                        bio_data +='<tr>';
+                           
+                    });
+                    $("#data_table").append(bio_data);
+                   
+                });
+                });
+            </script>
+</table>
+</div>
+</div>
+</body>
+</html>
+
